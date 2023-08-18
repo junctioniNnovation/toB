@@ -21,6 +21,7 @@
 		F97251B92A901EBB00CA4D73 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = F97251B82A901EBB00CA4D73 /* Then */; };
 		F97251BC2A901F6600CA4D73 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F97251BB2A901F6600CA4D73 /* Alamofire */; };
 		F97251BE2A901FF800CA4D73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97251BD2A901FF800CA4D73 /* AppDelegate.swift */; };
+		F97251C52A90396600CA4D73 /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97251C42A90396600CA4D73 /* View+CornerRadius.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		F97251A52A901B6C00CA4D73 /* toBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toBUITests.swift; sourceTree = "<group>"; };
 		F97251A72A901B6C00CA4D73 /* toBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toBUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F97251BD2A901FF800CA4D73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F97251C42A90396600CA4D73 /* View+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CornerRadius.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		F97251892A901B6900CA4D73 /* toB */ = {
 			isa = PBXGroup;
 			children = (
+				F97251C32A90395800CA4D73 /* Extensions */,
 				1357C0DC2A902C4800D631A9 /* Info.plist */,
 				F972518A2A901B6900CA4D73 /* toBApp.swift */,
 				F97251BD2A901FF800CA4D73 /* AppDelegate.swift */,
@@ -176,6 +179,14 @@
 				F97251A72A901B6C00CA4D73 /* toBUITestsLaunchTests.swift */,
 			);
 			path = toBUITests;
+			sourceTree = "<group>";
+		};
+		F97251C32A90395800CA4D73 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F97251C42A90396600CA4D73 /* View+CornerRadius.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +440,7 @@
 				F97251BE2A901FF800CA4D73 /* AppDelegate.swift in Sources */,
 				F972518D2A901B6900CA4D73 /* ContentView.swift in Sources */,
 				F972518B2A901B6900CA4D73 /* toBApp.swift in Sources */,
+				F97251C52A90396600CA4D73 /* View+CornerRadius.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
