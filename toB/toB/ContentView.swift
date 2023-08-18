@@ -30,14 +30,12 @@ struct ContentView: View {
             UIMapView(coord: coord)
                 .edgesIgnoringSafeArea(.vertical)
         }
-        
     }
 }
 
 
-
-
 struct UIMapView: UIViewRepresentable {
+    
     var coord: (Double, Double)
   
     func makeUIView(context: Context) -> NMFNaverMapView {
