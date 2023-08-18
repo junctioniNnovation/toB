@@ -1,0 +1,6 @@
+framework module Pods_toB_toBUITests {
+  umbrella header "Pods-toB-toBUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
