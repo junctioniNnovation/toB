@@ -10,7 +10,7 @@ import SwiftUI
 struct DestinationSelectorView: View {
     
     @Binding var title: String?
-    @State var isPrimary: Bool
+    @Binding var isPrimary: Bool
     var action: () -> Void
     
     var body: some View {

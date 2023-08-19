@@ -16,6 +16,9 @@ struct PathSelectionBottomSheetView: View {
     @State var endPoint: String?
     @State var isSheetUp = false
     @State var isSFullScreenUp = false
+    @State var isSearchViewShoudShow = false
+    @State var isStartpointPrimary = true
+    @State var isEndpointPrimary = false
     
     var body: some View {
         ZStack {
@@ -57,12 +60,12 @@ private extension PathSelectionBottomSheetView {
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 25.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
-                DestinationSelectorView(title: $startPoint, isPrimary: true) {
+                DestinationSelectorView(title: $startPoint, isPrimary: $isStartpointPrimary) {
                     // TODO: -
                 }
                 .padding(EdgeInsets(top: 20.0, leading: 0.0, bottom: 30.0, trailing: 0.0))
-                DestinationSelectorView(title: $endPoint, isPrimary: false) {
-                    // TODO: -
+                DestinationSelectorView(title: $endPoint, isPrimary: $isEndpointPrimary) {
+                    isSearchViewShoudShow.toggle()
                 }
             }
             .offset(CGSize(width: 20.0, height: 0.0))
@@ -81,6 +84,13 @@ private extension PathSelectionBottomSheetView {
                 }.frame(width: UIScreen.main.bounds.width - 36.0, height: 50.0)
                     .cornerRadius(16.0)
                     .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 60.0, trailing: 0.0))
+            }
+        }
+        .fullScreenCover(isPresented: $isSearchViewShoudShow) {
+            SearchView() { destination in
+                endPoint = destination
+                isEndpointPrimary = true
+                isSearchViewShoudShow.toggle()
             }
         }
         .fullScreenCover(isPresented: $isSFullScreenUp) {

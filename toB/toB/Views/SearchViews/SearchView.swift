@@ -12,6 +12,7 @@ struct SearchView: View {
     // 시작점: -> 변수이름 변경하는 것도 낫배드
     @State private var destination: String = ""
     @State private var endPoint: String = ""
+    @State var action: (String) -> Void
     // State로 endPoint와 destination
     // MARK: 더미데이터들 같은 뷰에서 재탕을 할꺼에요
     var busStopList = [
@@ -52,6 +53,7 @@ struct SearchView: View {
                     searchRow(placeName: place.placeName, place: place.place, distance: place.distance, destination: $destination)
                         .onTapGesture {
                             destination = place.placeName
+                            action(destination)
                         }
                         .listRowBackground(place.placeName == destination ? Color.mint : Color.clear)
                         
