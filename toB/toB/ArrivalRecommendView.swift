@@ -69,6 +69,9 @@ struct ArrivalRecommendView: View {
     }
 }
 
+
+// MARK: - RecommendScrollView
+
 struct RecommendScrollView: View {
     
     @State private var selectedBoxIndex: Int? = nil
