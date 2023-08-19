@@ -44,6 +44,7 @@ extension Color {
             }
         }
     }
+    
     enum GrayScale: iNnovationColors {
         case black
         case gray1
@@ -77,6 +78,8 @@ extension Color {
     }
 }
 
+
+// MARK: - Protocol
 
 protocol iNnovationColors {
     
