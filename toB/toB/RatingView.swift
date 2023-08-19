@@ -18,12 +18,48 @@ struct Info {
 }
 
 enum Tags {
-    case exciting
+    case isSavoring
+    case isFast
+    case isSway
+    case isPrivate
+    case isLowCost
+    case isUrban
+    case isSlowly
+    case isRestful
+    case isUnique
+    case isPhotospot
+    case isScnery
+    case isDynamic
+    case isAsIPlease
     
     var tagStyle: (String, Color) {
         switch self {
-        case .exciting:
-            return ("#exciting", Color.Tag.purple.color)
+        case .isSavoring:
+            return ("# Savoring", Color.Tag.yellow.color)
+        case .isFast:
+            return ("# Fast", Color.Tag.yellow.color)
+        case .isSway:
+            return ("# Sway", Color.Tag.purple.color)
+        case .isPrivate:
+            return ("# Private", Color.Tag.purple.color)
+        case .isLowCost:
+            return ("# LowCost", Color.Tag.pink.color)
+        case .isUrban:
+            return ("# Urban", Color.Tag.purple.color)
+        case .isSlowly:
+            return ("# Slowly", Color.Tag.pink.color)
+        case .isRestful:
+            return ("# Restful", Color.Tag.yellow.color)
+        case .isUnique:
+            return ("# Unique", Color.Tag.yellow.color)
+        case .isPhotospot:
+            return ("# Photospot", Color.Tag.purple.color)
+        case .isScnery:
+            return ("# Scenery", Color.Tag.blue.color)
+        case .isDynamic:
+            return ("# Dynamic", Color.Tag.yellow.color)
+        case .isAsIPlease:
+            return ("#As I Please", Color.Tag.pink.color)
         }
     }
 }
@@ -45,7 +81,7 @@ struct RatingView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 30)
-                    .padding(.bottom, 31)
+                    .padding(.bottom, 34)
                 
                 InfoCard(info: beachTrain)
                     .padding(.bottom, 20)
@@ -58,12 +94,12 @@ struct RatingView: View {
                         .foregroundColor(handleButtonText(selectedTagCount))
                         .fontWeight(.semibold)
                         .padding(.vertical, 15)
-                        .padding(.horizontal, 130.5)
+                        .frame(maxWidth: .infinity)
                         .background(
                             handleButtonStyle(selectedTagCount)
                         )
                 }
-                .padding(.bottom, 60)
+                .padding(.bottom, 10)
             }
             .padding(.horizontal, 24)
             .toolbar {
@@ -170,14 +206,38 @@ struct TagStack: View {
     @Binding var tagCount: Int
     
     var body: some View {
-        VStack {
-            HStack {
-                TagBox(tagCount: $tagCount, style: Tags.exciting.tagStyle)
+        VStack(spacing: 14) {
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isSavoring.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isFast.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isPrivate.tagStyle)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isSway.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isLowCost.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isUrban.tagStyle)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isSlowly.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isRestful.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isUnique.tagStyle)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isPhotospot.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isScnery.tagStyle)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isDynamic.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isAsIPlease.tagStyle)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
         }
-            .frame(maxHeight: .infinity)
+        .frame(maxHeight: .infinity)
     }
 }
 
