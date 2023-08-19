@@ -33,8 +33,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1357C0E22A90449E00D631A9 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357C0E12A90449E00D631A9 /* SearchView.swift */; };
-		13CAFDCE2A908F68006DC315 /* SerachModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CAFDCD2A908F68006DC315 /* SerachModel.swift */; };
 		1E167331920533FEC2CDBED4E4AD8AAE /* Pods-toB-toBUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 277A36C5EF631CA33C585072FA4747A4 /* Pods-toB-toBUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A5E3AC8A5B1845DB9AEF72BA94333E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		69B61BA05445A8DB2C6B0D134FE7B584 /* Pods-toBTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CED9D5A5A8373171DD6D1AF9F8A57786 /* Pods-toBTests-dummy.m */; };
@@ -96,8 +94,6 @@
 		04B45D4789D080A7754B0F20C714D63E /* Pods-toBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-toBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0970046F7060534BA9B286629593DA0C /* NMapsMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsMap.debug.xcconfig; sourceTree = "<group>"; };
 		09F9FEF1C9F3F6893D9A575F6C51EA57 /* Pods-toB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-toB-dummy.m"; sourceTree = "<group>"; };
-		1357C0E12A90449E00D631A9 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		13CAFDCD2A908F68006DC315 /* SerachModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachModel.swift; sourceTree = "<group>"; };
 		144110BCAC79F0F8DE795A82007149E7 /* Pods-toB-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-toB-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1853D3B2F7666F79851E4CDA8A44DB4D /* Pods-toB.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-toB.modulemap"; sourceTree = "<group>"; };
 		1A326C79B1B897CBCFDC36BFF5174A43 /* NMapsGeometry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NMapsGeometry.debug.xcconfig; sourceTree = "<group>"; };
@@ -163,23 +159,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1357C0DE2A90446C00D631A9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1357C0E02A90449200D631A9 /* SearchViews */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		1357C0E02A90449200D631A9 /* SearchViews */ = {
-			isa = PBXGroup;
-			children = (
-				1357C0E12A90449E00D631A9 /* SearchView.swift */,
-				13CAFDCD2A908F68006DC315 /* SerachModel.swift */,
-			);
-			name = SearchViews;
-			sourceTree = "<group>";
-		};
 		169A894F474781F666BE8D90408D3828 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				1357C0DE2A90446C00D631A9 /* View */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				25B56312D79088C322C5B52238334BCC /* Pods */,
 				70735A2FFAFBF14EBA9242B770923170 /* Products */,
@@ -550,9 +528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1357C0E22A90449E00D631A9 /* SearchView.swift in Sources */,
 				B08D1115ED6887A21DA0033AB5A0470B /* Pods-toB-dummy.m in Sources */,
-				13CAFDCE2A908F68006DC315 /* SerachModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
