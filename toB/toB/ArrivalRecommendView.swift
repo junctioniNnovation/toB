@@ -37,14 +37,14 @@ enum BarItems {
 }
 
 struct ArrivalRecommendView: View {
-    
+    @StateObject var locationManager = LocationManager()
     @Binding var isArrivalRecommendViewShouldShow: Bool
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
     
     var body: some View {
         NavigationStack {
             VStack {
-                UIMapView(coord: coord)
+                UIMapView(coord: $locationManager.currentCoordinate)
                 
                 RecommendScrollView()
                     .cornerRadius(12.0, corners: [.topLeft, .topRight])
