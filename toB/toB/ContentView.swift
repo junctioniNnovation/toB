@@ -9,15 +9,15 @@ import MapKit
 import SwiftUI
 import UIKit
 import NMapsMap
+import CoreLocation
 
 struct ContentView: View {
-    
-    @State var coord: (Double, Double) = (126.9784147, 37.5666805)
+    @StateObject var locationManager = LocationManager()
     @State var isSheetOn = true
     
     var body: some View {
         ZStack {
-            UIMapView(coord: coord)
+            UIMapView(coord: $locationManager.currentCoordinate)
                 .edgesIgnoringSafeArea(.vertical)
             VStack {
                 Spacer()
@@ -28,25 +28,43 @@ struct ContentView: View {
     }
 }
 
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private var locationManager = CLLocationManager()
+    @Published var currentCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
+    
+    override init() {
+        super.init()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last?.coordinate {
+            currentCoordinate = location
+            locationManager.stopUpdatingLocation()
+        }
+    }
+}
 
 struct UIMapView: UIViewRepresentable {
-
-    var coord: (Double, Double)
-
+    @Binding var coord: CLLocationCoordinate2D
+    
     func makeUIView(context: Context) -> NMFNaverMapView {
         let view = NMFNaverMapView()
         view.showZoomControls = false
-        view.mapView.positionMode = .direction
+        view.mapView.positionMode = NMFMyPositionMode.direction
         view.mapView.zoomLevel = 17.0
-
+        
         return view
     }
     
-
     func updateUIView(_ uiView: NMFNaverMapView, context: Context) {
-        let coord = NMGLatLng(lat: coord.1, lng: coord.0)
-        let cameraUpdate = NMFCameraUpdate(scrollTo: coord)
+        let initialCoord = NMGLatLng(lat: coord.latitude, lng: coord.longitude)
+        let cameraUpdate = NMFCameraUpdate(scrollTo: initialCoord)
         cameraUpdate.animation = .fly
         cameraUpdate.animationDuration = 1.0
-        uiView.mapView.moveCamera(cameraUpdate)}
+        uiView.mapView.moveCamera(cameraUpdate)
+    }
 }
