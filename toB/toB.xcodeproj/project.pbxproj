@@ -29,6 +29,8 @@
 		F97251C72A903A9C00CA4D73 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97251C62A903A9C00CA4D73 /* Colors.xcassets */; };
 		F97251C92A903C0800CA4D73 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97251C82A903C0800CA4D73 /* Colors.swift */; };
 		F97251CB2A90591C00CA4D73 /* DestinationSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97251CA2A90591B00CA4D73 /* DestinationSelectorView.swift */; };
+		F9EBF5692A90E74B003E128B /* CustomCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EBF5682A90E74B003E128B /* CustomCarousel.swift */; };
+		F9EBF56B2A90E775003E128B /* TransferRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EBF56A2A90E775003E128B /* TransferRecommendView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		F97251C62A903A9C00CA4D73 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F97251C82A903C0800CA4D73 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F97251CA2A90591B00CA4D73 /* DestinationSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectorView.swift; sourceTree = "<group>"; };
+		F9EBF5682A90E74B003E128B /* CustomCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCarousel.swift; sourceTree = "<group>"; };
+		F9EBF56A2A90E775003E128B /* TransferRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferRecommendView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 				F97251BD2A901FF800CA4D73 /* AppDelegate.swift */,
 				F972518C2A901B6900CA4D73 /* ContentView.swift */,
 				F97251C12A90371F00CA4D73 /* PathSelectionBottomSheetView.swift */,
+				F9EBF56A2A90E775003E128B /* TransferRecommendView.swift */,
+				F9EBF5682A90E74B003E128B /* CustomCarousel.swift */,
 				5B07B8F12A904F5E00DDE9DF /* DestinationSettingSheetView.swift */,
 				5B07B8F32A9064D100DDE9DF /* RatingView.swift */,
 				F97251CA2A90591B00CA4D73 /* DestinationSelectorView.swift */,
@@ -460,10 +466,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F97251C22A90371F00CA4D73 /* PathSelectionBottomSheetView.swift in Sources */,
+				F9EBF56B2A90E775003E128B /* TransferRecommendView.swift in Sources */,
 				F97251C92A903C0800CA4D73 /* Colors.swift in Sources */,
 				5B07B8F22A904F5E00DDE9DF /* DestinationSettingSheetView.swift in Sources */,
 				5B07B8F42A9064D100DDE9DF /* RatingView.swift in Sources */,
 				F97251BE2A901FF800CA4D73 /* AppDelegate.swift in Sources */,
+				F9EBF5692A90E74B003E128B /* CustomCarousel.swift in Sources */,
 				F97251CB2A90591C00CA4D73 /* DestinationSelectorView.swift in Sources */,
 				F972518D2A901B6900CA4D73 /* ContentView.swift in Sources */,
 				5B07B8F62A9097ED00DDE9DF /* ArrivalRecommendView.swift in Sources */,
