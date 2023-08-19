@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13CAFDE02A90EBBC006DC315 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CAFDDF2A90EBBC006DC315 /* Test.swift */; };
+		13E157142A90EF6D00D989DA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E157132A90EF6D00D989DA /* SearchView.swift */; };
+		13E157162A90EF8700D989DA /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E157152A90EF8700D989DA /* SearchModel.swift */; };
 		2CDB54C3FAA009628387EFAE /* Pods_toBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345EEAB738F57F91662B42C0 /* Pods_toBTests.framework */; };
 		5B07B8F22A904F5E00DDE9DF /* DestinationSettingSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B8F12A904F5E00DDE9DF /* DestinationSettingSheetView.swift */; };
 		5B07B8F42A9064D100DDE9DF /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B8F32A9064D100DDE9DF /* RatingView.swift */; };
@@ -52,6 +55,9 @@
 
 /* Begin PBXFileReference section */
 		1357C0DC2A902C4800D631A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		13CAFDDF2A90EBBC006DC315 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		13E157132A90EF6D00D989DA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		13E157152A90EF8700D989DA /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		345EEAB738F57F91662B42C0 /* Pods_toBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_toBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39583689A4254E724EE8C6BD /* Pods-toBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toBTests.debug.xcconfig"; path = "Target Support Files/Pods-toBTests/Pods-toBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A755837A31E3C1FBE82D515 /* Pods-toB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toB.debug.xcconfig"; path = "Target Support Files/Pods-toB/Pods-toB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +121,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13E157112A90EF4B00D989DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13E157122A90EF5D00D989DA /* SearchViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		13E157122A90EF5D00D989DA /* SearchViews */ = {
+			isa = PBXGroup;
+			children = (
+				13E157132A90EF6D00D989DA /* SearchView.swift */,
+				13E157152A90EF8700D989DA /* SearchModel.swift */,
+			);
+			path = SearchViews;
+			sourceTree = "<group>";
+		};
 		A83D446F6F0B0B768D5BFD0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +186,7 @@
 		F97251892A901B6900CA4D73 /* toB */ = {
 			isa = PBXGroup;
 			children = (
+				13E157112A90EF4B00D989DA /* Views */,
 				F97251C32A90395800CA4D73 /* Extensions */,
 				1357C0DC2A902C4800D631A9 /* Info.plist */,
 				F972518A2A901B6900CA4D73 /* toBApp.swift */,
@@ -178,6 +202,7 @@
 				F972518E2A901B6B00CA4D73 /* Assets.xcassets */,
 				F97251C62A903A9C00CA4D73 /* Colors.xcassets */,
 				F97251902A901B6B00CA4D73 /* Preview Content */,
+				13CAFDDF2A90EBBC006DC315 /* Test.swift */,
 			);
 			path = toB;
 			sourceTree = "<group>";
@@ -468,12 +493,15 @@
 				F97251C22A90371F00CA4D73 /* PathSelectionBottomSheetView.swift in Sources */,
 				F9EBF56B2A90E775003E128B /* TransferRecommendView.swift in Sources */,
 				F97251C92A903C0800CA4D73 /* Colors.swift in Sources */,
+				13E157162A90EF8700D989DA /* SearchModel.swift in Sources */,
 				5B07B8F22A904F5E00DDE9DF /* DestinationSettingSheetView.swift in Sources */,
 				5B07B8F42A9064D100DDE9DF /* RatingView.swift in Sources */,
 				F97251BE2A901FF800CA4D73 /* AppDelegate.swift in Sources */,
+				13CAFDE02A90EBBC006DC315 /* Test.swift in Sources */,
 				F9EBF5692A90E74B003E128B /* CustomCarousel.swift in Sources */,
 				F97251CB2A90591C00CA4D73 /* DestinationSelectorView.swift in Sources */,
 				F972518D2A901B6900CA4D73 /* ContentView.swift in Sources */,
+				13E157142A90EF6D00D989DA /* SearchView.swift in Sources */,
 				5B07B8F62A9097ED00DDE9DF /* ArrivalRecommendView.swift in Sources */,
 				F972518B2A901B6900CA4D73 /* toBApp.swift in Sources */,
 				F97251C52A90396600CA4D73 /* View+CornerRadius.swift in Sources */,
