@@ -41,6 +41,7 @@ struct UIMapView: UIViewRepresentable {
 
         return view
     }
+    
 
     func updateUIView(_ uiView: NMFNaverMapView, context: Context) {
         let coord = NMGLatLng(lat: coord.1, lng: coord.0)
