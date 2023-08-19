@@ -31,7 +31,7 @@ enum Tags {
 struct RatingView: View {
     @State var selectedTagCount = 0
     
-    let description = "How was this journey \nfor you?"
+    let description = "How was your journey?"
     let buttonLabel = "Complete"
     let buttonRadius = 16.0
     
@@ -55,13 +55,12 @@ struct RatingView: View {
                 Button {
                 } label: {
                     Text(buttonLabel)
-                        .foregroundColor(handleButtonStyle(selectedTagCount).1)
+                        .foregroundColor(handleButtonText(selectedTagCount))
                         .fontWeight(.semibold)
                         .padding(.vertical, 15)
                         .padding(.horizontal, 130.5)
                         .background(
-                            RoundedRectangle(cornerRadius: buttonRadius)
-                                .fill(handleButtonStyle(selectedTagCount).0)
+                            handleButtonStyle(selectedTagCount)
                         )
                 }
                 .padding(.bottom, 60)
@@ -80,12 +79,29 @@ struct RatingView: View {
             }
         }
     }
-    
-    func handleButtonStyle(_ selectedTagCount: Int) -> (Color, Color) {
+    func handleButtonText(_ selectedTagCount: Int) -> Color {
         if selectedTagCount < 1 {
-            return (Color.GrayScale.white.color, Color.GrayScale.gray4.color)
+            return Color.GrayScale.gray4.color
         } else {
-            return (Color.GrayScale.black.color, Color.GrayScale.white.color)
+            return Color.GrayScale.white.color
+        }
+    }
+    
+    func handleButtonStyle(_ selectedTagCount: Int) -> some View {
+        if selectedTagCount < 1 {
+            let rectangle = RoundedRectangle(cornerRadius: buttonRadius)
+                .inset(by: 0.5)
+                .strokeBorder(Color.GrayScale.gray4.color)
+                .background(Color.GrayScale.white.color)
+                .cornerRadius(buttonRadius)
+            return rectangle
+        } else {
+            let rectangle = RoundedRectangle(cornerRadius: buttonRadius)
+                .inset(by: 0.5)
+                .strokeBorder(Color.GrayScale.black.color)
+                .background(Color.GrayScale.black.color)
+                .cornerRadius(buttonRadius)
+            return rectangle
         }
     }
 }
@@ -123,8 +139,8 @@ struct InfoCard: View {
                         
                         VStack(alignment: .leading, spacing: 6) {
                             Text("\(info.duration)min")
-                            Text("\(String(format: "%.1f", info.distance))min")
-                            Text("\(info.price)min")
+                            Text("\(String(format: "%.1f", info.distance))km")
+                            Text("\(info.price)won")
                         }
                         .font(.system(size: 12))
                         .fontWeight(.semibold)
