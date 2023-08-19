@@ -17,8 +17,8 @@ struct DestinationSelectorView: View {
         VStack {
             HStack {
                 Circle()
-                    .strokeBorder(Color.Primary.main.color, lineWidth: 1.0)
-                    .background(Circle().foregroundColor(isPrimary ? Color.clear : Color.Primary.main.color))
+                    .strokeBorder(Color.GrayScale.black.color, lineWidth: 1.0)
+                    .background(Circle().foregroundColor(isPrimary ? Color.clear : Color.GrayScale.black.color))
                     .frame(width: 9.0, height: 9.0)
                     .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 14.0))
                 Text(title)

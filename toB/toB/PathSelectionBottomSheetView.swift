@@ -38,25 +38,49 @@ private extension PathSelectionBottomSheetView {
     @ViewBuilder
     func DestinationSelectionView() -> some View {
         VStack {
-            HStack {
-                Text("\(numberOfTravelers) Travelers")
-                    .font(.system(size: 14.0, weight: .semibold))
-                    .padding(EdgeInsets(top: 10.0, leading: 10.0, bottom: 10.0, trailing: 10.0))
-                    .background(Color.Secondary.light.color)
-                    .cornerRadius(7.0)
-                Spacer()
-            }
-            .padding(EdgeInsets(top: 25.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
-            DestinationSelectorView(title: $startPoint, isPrimary: true) {
-                // TODO: -
-            }
+            VStack {
+                HStack {
+                    Text("\(numberOfTravelers) Travelers")
+                        .font(.system(size: 14.0, weight: .semibold))
+                        .padding(EdgeInsets(top: 10.0, leading: 10.0, bottom: 10.0, trailing: 10.0))
+                        .background(Color.Primary.light20.color)
+                        .cornerRadius(7.0)
+                        .overlay(RoundedRectangle(cornerRadius: 7.0).strokeBorder(Color.GrayScale.black.color, lineWidth: 1.0))
+                    Spacer()
+                }
+                .padding(EdgeInsets(top: 25.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
+                DestinationSelectorView(title: $startPoint, isPrimary: true) {
+                    // TODO: -
+                }
                 .padding(EdgeInsets(top: 20.0, leading: 0.0, bottom: 30.0, trailing: 0.0))
-            DestinationSelectorView(title: $endPoint, isPrimary: false) {
-                // TODO: -
+                DestinationSelectorView(title: $endPoint, isPrimary: false) {
+                    // TODO: -
+                }
             }
+            .offset(CGSize(width: 20.0, height: 0.0))
             Spacer()
+            Button {
+                guard endPoint != nil else {
+                    isSFullScreenUp.toggle()
+                    return
+                }
+                isSheetUp.toggle()
+            } label: {
+                ZStack {
+                    Color.GrayScale.black.color
+                    Text("Continue")
+                        .foregroundColor(Color.GrayScale.white.color)
+                }.frame(width: UIScreen.main.bounds.width - 36.0, height: 50.0)
+                    .cornerRadius(16.0)
+                    .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 60.0, trailing: 0.0))
+            }
         }
-        .offset(CGSize(width: 20.0, height: 0.0))
+        .fullScreenCover(isPresented: $isSFullScreenUp) {
+            TransferRecommendView(isScreenUp: $isSFullScreenUp, isFullScreen: true)
+        }
+        .sheet(isPresented: $isSheetUp) {
+            TransferRecommendView(isScreenUp: $isSheetUp, isFullScreen: false)
+        }
     }
 }
 
@@ -89,11 +113,11 @@ private extension PathSelectionBottomSheetView {
             Button {
                 isTravelerNumberSelected = true
                 withAnimation {
-                    viewHeight = 254.0
+                    viewHeight = 320.0
                 }
             } label: {
                 ZStack {
-                    Color.Primary.main.color
+                    Color.GrayScale.black.color
                     Text("Continue")
                         .foregroundColor(Color.GrayScale.white.color)
                 }.frame(width: UIScreen.main.bounds.width - 36.0, height: 50.0)
@@ -136,5 +160,11 @@ private extension PathSelectionBottomSheetView {
         .frame(width: 95.0, height: 31.0)
         .background(Color.GrayScale.gray6.color)
         .cornerRadius(7.0)
+        .overlay(
+            RoundedRectangle(
+                cornerSize: .init(width: 7.0, height: 7.0)
+            )
+            .strokeBorder(Color.GrayScale.black.color, lineWidth: 1.0)
+        )
     }
 }
