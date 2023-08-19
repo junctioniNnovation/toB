@@ -10,6 +10,7 @@ import UIKit
 import NMapsMap
 
 struct Location {
+    
     let uuid = UUID()
     let place: String
     let duration: Int
@@ -36,8 +37,10 @@ enum BarItems {
 }
 
 struct ArrivalRecommendView: View {
+    
     @Binding var isArrivalRecommendViewShouldShow: Bool
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -134,6 +137,7 @@ private extension RecommendScrollView {
 // MARK: - BoxInfo
 
 struct BoxInfo: View {
+    
     let index: Int
     let location: Location
     @Binding var selectedBoxIndex: Int?
@@ -178,12 +182,14 @@ struct BoxInfo: View {
             .foregroundColor(Color.GrayScale.black.color)
         }
     }
+    
     func handleBoxStrokeAndTextColor(selectedIndex: Int?) -> Color {
         guard let selectedIndex else {
             return .GrayScale.black.color
         }
         return selectedIndex == index ? .GrayScale.black.color : .GrayScale.gray4.color
     }
+    
     func handleBoxColor(selectedIndex: Int?) -> Color {
         return selectedIndex == index ? Color.Primary.light.color : .clear
     }
