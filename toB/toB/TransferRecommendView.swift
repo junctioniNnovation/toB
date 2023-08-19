@@ -14,7 +14,7 @@ struct TransferRecommendView: View {
     @State var currentIndex: Int = 0
     @State private var shouldTransition = true
     @Binding var isScreenUp: Bool
-    @State var isArrivalRecommendViewShowShow = false
+    @State var isArrivalRecommendViewShouldShow = false
     var isFullScreen = false
     
     private let maxScaleEffect: CGFloat = 4.0
@@ -55,7 +55,7 @@ struct TransferRecommendView: View {
                     }
                     Spacer()
                     Button {
-                        isArrivalRecommendViewShowShow.toggle()
+                        isArrivalRecommendViewShouldShow.toggle()
                     } label: {
                         Circle()
                             .overlay(Circle().fill(Color.Primary.main.color))
@@ -68,8 +68,8 @@ struct TransferRecommendView: View {
                 Spacer()
             }.padding([.horizontal,.top], 15)
         }.presentationDetents([.medium])
-            .fullScreenCover(isPresented: $isArrivalRecommendViewShowShow) {
-                ArrivalRecommendView(isArrivalRecommendViewShowShow: $isArrivalRecommendViewShowShow)
+            .fullScreenCover(isPresented: $isArrivalRecommendViewShouldShow) {
+                ArrivalRecommendView()
             }
     }
 }
