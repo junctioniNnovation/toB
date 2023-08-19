@@ -22,6 +22,8 @@
 		F97251BC2A901F6600CA4D73 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F97251BB2A901F6600CA4D73 /* Alamofire */; };
 		F97251BE2A901FF800CA4D73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97251BD2A901FF800CA4D73 /* AppDelegate.swift */; };
 		F97251C52A90396600CA4D73 /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97251C42A90396600CA4D73 /* View+CornerRadius.swift */; };
+		F97251C72A903A9C00CA4D73 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F97251C62A903A9C00CA4D73 /* Colors.xcassets */; };
+		F97251C92A903C0800CA4D73 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97251C82A903C0800CA4D73 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		F97251A72A901B6C00CA4D73 /* toBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toBUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F97251BD2A901FF800CA4D73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F97251C42A90396600CA4D73 /* View+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CornerRadius.swift"; sourceTree = "<group>"; };
+		F97251C62A903A9C00CA4D73 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		F97251C82A903C0800CA4D73 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +155,7 @@
 				F97251BD2A901FF800CA4D73 /* AppDelegate.swift */,
 				F972518C2A901B6900CA4D73 /* ContentView.swift */,
 				F972518E2A901B6B00CA4D73 /* Assets.xcassets */,
+				F97251C62A903A9C00CA4D73 /* Colors.xcassets */,
 				F97251902A901B6B00CA4D73 /* Preview Content */,
 			);
 			path = toB;
@@ -185,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				F97251C42A90396600CA4D73 /* View+CornerRadius.swift */,
+				F97251C82A903C0800CA4D73 /* Colors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F97251C72A903A9C00CA4D73 /* Colors.xcassets in Resources */,
 				F97251922A901B6B00CA4D73 /* Preview Assets.xcassets in Resources */,
 				F972518F2A901B6B00CA4D73 /* Assets.xcassets in Resources */,
 			);
@@ -437,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F97251C92A903C0800CA4D73 /* Colors.swift in Sources */,
 				F97251BE2A901FF800CA4D73 /* AppDelegate.swift in Sources */,
 				F972518D2A901B6900CA4D73 /* ContentView.swift in Sources */,
 				F972518B2A901B6900CA4D73 /* toBApp.swift in Sources */,
