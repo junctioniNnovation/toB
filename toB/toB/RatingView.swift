@@ -23,13 +23,14 @@ enum Tags {
     var tagStyle: (String, Color) {
         switch self {
         case .exciting:
-            return ("#exciting", Color.purple)
+            return ("#exciting", Color.Tag.purple.color)
         }
     }
 }
 
 struct RatingView: View {
-    @State var isRated = false
+    @State var selectedTagCount = 0
+    
     let description = "How was this journey \nfor you?"
     let buttonLabel = "Complete"
     let buttonRadius = 16.0
@@ -44,29 +45,25 @@ struct RatingView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 30)
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 31)
                 
                 InfoCard(info: beachTrain)
                     .padding(.bottom, 20)
                 
-                TagStack()
-
+                TagStack(tagCount: $selectedTagCount)
+                
                 Button {
-                    
                 } label: {
-                    HStack {
-                        ZStack {
-                            Color.GrayScale.black.color
-                            Text(buttonLabel)
-                                .foregroundColor(Color.GrayScale.white.color)
-                                .fontWeight(.semibold)
-                                .padding(.vertical, 15)
-                        }
-                        .cornerRadius(buttonRadius)
-                        .padding(.vertical, 0)
-                    }
+                    Text(buttonLabel)
+                        .foregroundColor(handleButtonStyle(selectedTagCount).1)
+                        .fontWeight(.semibold)
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 130.5)
+                        .background(
+                            RoundedRectangle(cornerRadius: buttonRadius)
+                                .fill(handleButtonStyle(selectedTagCount).0)
+                        )
                 }
-                .padding(.top, 85)
                 .padding(.bottom, 60)
             }
             .padding(.horizontal, 24)
@@ -81,11 +78,15 @@ struct RatingView: View {
                     }
                 }
             }
-            
         }
     }
-    func handleButton() {
-        //TODO: 버튼 활성화
+    
+    func handleButtonStyle(_ selectedTagCount: Int) -> (Color, Color) {
+        if selectedTagCount < 1 {
+            return (Color.GrayScale.white.color, Color.GrayScale.gray4.color)
+        } else {
+            return (Color.GrayScale.black.color, Color.GrayScale.white.color)
+        }
     }
 }
 
@@ -94,67 +95,68 @@ struct InfoCard: View {
     let cardRadius = 12.0
     
     var body: some View {
-        ZStack {
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(info.transportation)
+                    .font(.system(size: 30))
+                    .fontWeight(.bold)
+                    .padding(.top, 18)
+                    .padding(.bottom, 3)
+                
+                Text("\(info.departure) → \(info.destination)")
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
+                    .padding(.bottom, 13)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
+            HStack {
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Travel Time")
+                            Text("Distance")
+                            Text("Price")
+                        }
+                        .font(.system(size: 10))
+                        .padding(.trailing, 24)
+                        
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("\(info.duration)min")
+                            Text("\(String(format: "%.1f", info.distance))min")
+                            Text("\(info.price)min")
+                        }
+                        .font(.system(size: 12))
+                        .fontWeight(.semibold)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text(info.emoji)
+                    .font(.system(size: 40))
+                    .fontWeight(.bold)
+            }
+            .padding(.bottom, 21)
+        }
+        .padding(.horizontal, 28)
+        .background(
             RoundedRectangle(cornerRadius: cardRadius)
                 .inset(by: 0.5)
                 .stroke(Color.GrayScale.black.color)
                 .background(Color.Primary.light40.color)
-            
-            VStack(spacing: 0) {
-                VStack(alignment: .leading) {
-                    Text(info.transportation)
-                        .font(.system(size: 30))
-                        .fontWeight(.bold)
-                    
-                    Text("\(info.departure) → \(info.destination)")
-                        .font(.system(size: 16))
-                        .fontWeight(.bold)
-                        .padding(.bottom, 12)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 32)
-                
-                HStack {
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text("Travel Time")
-                                Text("Distance")
-                                Text("Price")
-                            }
-                            .font(.system(size: 10))
-                            .padding(.trailing, 24)
-                            
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("\(info.duration)min")
-                                Text("\(String(format: "%.1f", info.distance))min")
-                                Text("\(info.price)min")
-                            }
-                            .font(.system(size: 12))
-                            .fontWeight(.semibold)
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 32)
-                    
-                    Text(info.emoji)
-                        .font(.system(size: 40))
-                        .fontWeight(.bold)
-                        .padding(.trailing, 35)
-                }
-            }
-        }
+        )
         .foregroundColor(Color.GrayScale.black.color)
-        .frame(width: 342, height: 164)
         .cornerRadius(cardRadius)
     }
 }
 
 struct TagStack: View {
+    @Binding var tagCount: Int
+    
     var body: some View {
         VStack {
             HStack {
-                Tag(style: Tags.exciting.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.exciting.tagStyle)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
@@ -163,18 +165,21 @@ struct TagStack: View {
     }
 }
 
-struct Tag: View {
+struct TagBox: View {
     @State var isTagSelected = false
+    @Binding var tagCount: Int
     
     let tagRadius = 12.0
     let style: (String, Color)
     
     var body: some View {
         Button {
-            handleTag(isTagSelected)
+            handleTag(isTagSelected, tagCount)
         } label: {
             HStack {
                 Text(style.0)
+                    .font(.system(size: 16))
+                    .fontWeight(.bold)
                     .foregroundColor(Color.GrayScale.black.color)
                     .padding(.vertical, 12)
                     .padding(.horizontal, 16)
@@ -182,14 +187,21 @@ struct Tag: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: tagRadius)
-                .inset(by: 0.5)
-                .stroke(Color.GrayScale.black.color)
-                .background(handleTagStyle(isTagSelected))
-                .cornerRadius(tagRadius))
+                    .inset(by: 0.5)
+                    .stroke(Color.GrayScale.black.color)
+                    .background(handleTagStyle(isTagSelected))
+                    .cornerRadius(tagRadius))
         }
     }
-    func handleTag(_ isTagSelected: Bool) {
+    func handleTag(_ isTagSelected: Bool, _ tagCount: Int) {
         self.isTagSelected.toggle()
+        
+        if !isTagSelected {
+            self.tagCount += 1
+        } else {
+            self.tagCount -= 1
+        }
+        print(tagCount)
     }
     
     func handleTagStyle(_ isTagSelected: Bool) -> Color {
