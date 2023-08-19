@@ -15,6 +15,8 @@ extension Color {
         case main
         case light
         case light20
+        case light40
+        case light60
         
         var color: Color {
             switch self {
@@ -24,6 +26,10 @@ extension Color {
                 return Color("PrimaryLight")
             case .light20:
                 return Color("PrimaryLight20")
+            case .light40:
+                return Color("PrimaryLight40")
+            case .light60:
+                return Color("PrimaryLight60")
             }
         }
     }
