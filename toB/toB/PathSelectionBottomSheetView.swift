@@ -56,6 +56,9 @@ private extension PathSelectionBottomSheetView {
                         )
                         .onTapGesture {
                             isTravelerNumberSelected.toggle()
+                            withAnimation {
+                                viewHeight = 200.0
+                            }
                         }
                     Spacer()
                 }

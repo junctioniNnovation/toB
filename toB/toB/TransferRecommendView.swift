@@ -45,7 +45,7 @@ struct TransferRecommendView: View {
                 .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: isFullScreen ? 53.0 : 37.0, trailing: 0.0))
                 HStack {
                     Button {
-                        // TODO: -
+                        isScreenUp.toggle()
                     } label: {
                         Circle()
                             .overlay(Circle().fill(Color.GrayScale.gray5.color))

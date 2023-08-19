@@ -47,7 +47,7 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
                     let index = indexOf(item: val)
                     var contentHeight: CGFloat {
                         guard index == self.index else {
-                            return isFullScreen ? 240.0 : 105.0
+                            return 0
                         }
                         return isFullScreen ? 494.0 : 164.0
                     }
