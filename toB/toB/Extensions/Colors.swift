@@ -82,6 +82,29 @@ extension Color {
             }
         }
     }
+    
+    enum Tag: iNnovationColors {
+        case blue
+        case green
+        case pink
+        case yellow
+        case purple
+        
+        var color: Color {
+            switch self {
+            case .blue:
+                return Color("TagBlue")
+            case .green:
+                return Color("TagGreen")
+            case .pink:
+                return Color("TagPink")
+            case .yellow:
+                return Color("TagYellow")
+            case .purple:
+                return Color("TagPurple")
+            }
+        }
+    }
 }
 
 
