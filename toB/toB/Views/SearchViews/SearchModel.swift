@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct PlaceInfo: Identifiable,Hashable {
+    // 더미데이터 모델
     let id = UUID()
     var placeName: String
     var place: String
