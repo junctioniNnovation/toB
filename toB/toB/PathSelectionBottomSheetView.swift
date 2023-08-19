@@ -12,8 +12,10 @@ struct PathSelectionBottomSheetView: View {
     @State var numberOfTravelers = 1
     @State var isTravelerNumberSelected = false
     @State var viewHeight = 200.0
-    @State var startPoint: String = "Bexco"
-    @State var endPoint: String = "Where is the destination?"
+    @State var startPoint: String? = "Bexco"
+    @State var endPoint: String?
+    @State var isSheetUp = false
+    @State var isSFullScreenUp = false
     
     var body: some View {
         ZStack {
@@ -45,7 +47,13 @@ private extension PathSelectionBottomSheetView {
                         .padding(EdgeInsets(top: 10.0, leading: 10.0, bottom: 10.0, trailing: 10.0))
                         .background(Color.Primary.light20.color)
                         .cornerRadius(7.0)
-                        .overlay(RoundedRectangle(cornerRadius: 7.0).strokeBorder(Color.GrayScale.black.color, lineWidth: 1.0))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 7.0)
+                                .strokeBorder(Color.GrayScale.black.color, lineWidth: 1.0)
+                        )
+                        .onTapGesture {
+                            isTravelerNumberSelected.toggle()
+                        }
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 25.0, leading: 0.0, bottom: 0.0, trailing: 0.0))
