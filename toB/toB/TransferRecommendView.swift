@@ -69,7 +69,7 @@ struct TransferRecommendView: View {
             }.padding([.horizontal,.top], 15)
         }.presentationDetents([.medium])
             .fullScreenCover(isPresented: $isArrivalRecommendViewShouldShow) {
-                ArrivalRecommendView()
+                ArrivalRecommendView(isArrivalRecommendViewShouldShow: $isArrivalRecommendViewShouldShow)
             }
     }
 }

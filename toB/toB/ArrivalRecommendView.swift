@@ -36,6 +36,7 @@ enum BarItems {
 }
 
 struct ArrivalRecommendView: View {
+    @Binding var isArrivalRecommendViewShouldShow: Bool
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
     var body: some View {
         NavigationStack {
@@ -48,7 +49,7 @@ struct ArrivalRecommendView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        
+                        isArrivalRecommendViewShouldShow.toggle()
                     } label: {
                         Image(systemName: BarItems.leftButton.label)
                             .fontWeight(.semibold)
