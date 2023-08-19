@@ -58,21 +58,21 @@ extension Color {
         var color: Color {
             switch self {
             case .black:
-                return Color("GrayScaleBlack")
+                return Color("GrayscaleBlack")
             case .gray1:
-                return Color("GrayScaleGray1")
+                return Color("GrayscaleGray1")
             case .gray2:
-                return Color("GrayScaleGray2")
+                return Color("GrayscaleGray2")
             case .gray3:
-                return Color("GrayScaleGray3")
+                return Color("GrayscaleGray3")
             case .gray4:
-                return Color("GrayScaleGray4")
+                return Color("GrayscaleGray4")
             case .gray5:
-                return Color("GrayScaleGray5")
+                return Color("GrayscaleGray5")
             case .gray6:
-                return Color("GrayScaleGray6")
+                return Color("GrayscaleGray6")
             case .white:
-                return Color("GrayScaleWhite")
+                return Color("GrayscaleWhite")
             }
         }
     }
