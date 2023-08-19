@@ -35,6 +35,7 @@ enum BarItems {
 }
 
 struct ArrivalRecommendView: View {
+    @Binding var isArrivalRecommendViewShowShow: Bool
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
     var body: some View {
         NavigationStack {
@@ -46,7 +47,7 @@ struct ArrivalRecommendView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        
+                        isArrivalRecommendViewShowShow.toggle()
                     } label: {
                         Image(systemName: BarItems.leftButton.label)
                             .fontWeight(.semibold)
@@ -132,11 +133,5 @@ struct BoxInfo: View {
         } else {
             return Color.Primary.light.color
         }
-    }
-}
-
-struct ArrivalRecommendView_Previews: PreviewProvider {
-    static var previews: some View {
-        ArrivalRecommendView()
     }
 }
