@@ -10,6 +10,7 @@
 		2CDB54C3FAA009628387EFAE /* Pods_toBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345EEAB738F57F91662B42C0 /* Pods_toBTests.framework */; };
 		5B07B8F22A904F5E00DDE9DF /* DestinationSettingSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B8F12A904F5E00DDE9DF /* DestinationSettingSheetView.swift */; };
 		5B07B8F42A9064D100DDE9DF /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B8F32A9064D100DDE9DF /* RatingView.swift */; };
+		5B07B8F62A9097ED00DDE9DF /* ArrivalRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07B8F52A9097ED00DDE9DF /* ArrivalRecommendView.swift */; };
 		C7ABB951003600AA8F3AAC30 /* Pods_toB_toBUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C62F5A08106390DFD70F58C5 /* Pods_toB_toBUITests.framework */; };
 		D661F52ED0BDB1E0D96D6371 /* Pods_toB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8CB70E1699C4A87387F891 /* Pods_toB.framework */; };
 		F972518B2A901B6900CA4D73 /* toBApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F972518A2A901B6900CA4D73 /* toBApp.swift */; };
@@ -54,6 +55,7 @@
 		4A755837A31E3C1FBE82D515 /* Pods-toB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toB.debug.xcconfig"; path = "Target Support Files/Pods-toB/Pods-toB.debug.xcconfig"; sourceTree = "<group>"; };
 		5B07B8F12A904F5E00DDE9DF /* DestinationSettingSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSettingSheetView.swift; sourceTree = "<group>"; };
 		5B07B8F32A9064D100DDE9DF /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		5B07B8F52A9097ED00DDE9DF /* ArrivalRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalRecommendView.swift; sourceTree = "<group>"; };
 		6E8CB70E1699C4A87387F891 /* Pods_toB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_toB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8321D3DDCC49FFBE56167515 /* Pods-toBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toBTests.release.xcconfig"; path = "Target Support Files/Pods-toBTests/Pods-toBTests.release.xcconfig"; sourceTree = "<group>"; };
 		8C67DD858B278D859F66832B /* Pods-toB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toB.release.xcconfig"; path = "Target Support Files/Pods-toB/Pods-toB.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				F97251C32A90395800CA4D73 /* Extensions */,
 				1357C0DC2A902C4800D631A9 /* Info.plist */,
 				F972518A2A901B6900CA4D73 /* toBApp.swift */,
+				5B07B8F52A9097ED00DDE9DF /* ArrivalRecommendView.swift */,
 				F97251BD2A901FF800CA4D73 /* AppDelegate.swift */,
 				F972518C2A901B6900CA4D73 /* ContentView.swift */,
 				F97251C12A90371F00CA4D73 /* PathSelectionBottomSheetView.swift */,
@@ -463,6 +466,7 @@
 				F97251BE2A901FF800CA4D73 /* AppDelegate.swift in Sources */,
 				F97251CB2A90591C00CA4D73 /* DestinationSelectorView.swift in Sources */,
 				F972518D2A901B6900CA4D73 /* ContentView.swift in Sources */,
+				5B07B8F62A9097ED00DDE9DF /* ArrivalRecommendView.swift in Sources */,
 				F972518B2A901B6900CA4D73 /* toBApp.swift in Sources */,
 				F97251C52A90396600CA4D73 /* View+CornerRadius.swift in Sources */,
 			);
