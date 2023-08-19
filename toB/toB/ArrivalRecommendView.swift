@@ -77,7 +77,7 @@ struct RecommendScrollView: View {
         ZStack {
             VStack {
                 ScrollView {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 20.0    ) {
                         ForEach(1..<5) { index in
                             BoxInfo(
                                 index: index,
@@ -88,7 +88,7 @@ struct RecommendScrollView: View {
                             }
                         }
                     }
-                    .padding(.top, 25)
+                    .padding(.top, 25.0)
                 }
                 if selectedBoxIndex != nil {
                     
@@ -147,31 +147,31 @@ struct BoxInfo: View {
                     .background(handleBoxColor(selectedIndex: selectedBoxIndex))
                     .cornerRadius(Metric.boxRadius)
                 
-                VStack(spacing: 3) {
+                VStack(spacing: 3.0) {
                     Text(location.place)
-                        .font(.system(size: 20))
+                        .font(.system(size: 20.0))
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(handleBoxStrokeAndTextColor(selectedIndex: selectedBoxIndex))
                     
-                    HStack(spacing: 13) {
+                    HStack(spacing: 13.0) {
                         Text("\(location.duration)min")
                         Text("\(location.distance)km")
                         Text("\(location.price)won")
                     }
-                    .font(.system(size: 12))
+                    .font(.system(size: 12.0))
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(handleBoxStrokeAndTextColor(selectedIndex: selectedBoxIndex))
                     
                     Text(location.address)
-                        .font(.system(size: 10))
+                        .font(.system(size: 10.0))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding(.horizontal, 16)
+                .padding(.horizontal, 16.0)
                 .padding(.vertical, 13.5)
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 24.0)
             .foregroundColor(Color.GrayScale.black.color)
         }
     }
@@ -192,6 +192,6 @@ struct BoxInfo: View {
 private extension BoxInfo {
     
     enum Metric {
-        static let boxRadius: CGFloat = 12
+        static let boxRadius: CGFloat = 12.0
     }
 }

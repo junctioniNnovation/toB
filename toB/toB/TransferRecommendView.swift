@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TransferRecommendView: View {
     
-    @State var Ontab: Bool = false
+    @State var ontab: Bool = false
     @State var background: Color = .clear
     @State var currentIndex: Int = 0
     @State private var shouldTransition = true
@@ -35,7 +35,7 @@ struct TransferRecommendView: View {
                     cardPadding: 48.0,
                     id: \.self,
                     isFullScreen: isFullScreen
-                ){ transfertation, _, _ in
+                ) { transfertation, _, _ in
                     if isFullScreen {
                         FullscreenCard(transfertation: transfertation)
                     } else {
