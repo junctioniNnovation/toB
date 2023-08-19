@@ -20,6 +20,7 @@ struct Location {
 enum BarItems {
     case leftButton
     case title
+    case rightButton
     
     var label: String {
         switch self {
@@ -27,6 +28,8 @@ enum BarItems {
             return "chevron.left"
         case .title:
             return "Destination Recommend"
+        case .rightButton:
+            return "xmark"
         }
     }
 }
