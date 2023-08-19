@@ -10,6 +10,7 @@ import UIKit
 import NMapsMap
 
 struct Location {
+    let uuid = UUID()
     let place: String
     let duration: Int
     let distance: Int
@@ -68,51 +69,101 @@ struct ArrivalRecommendView: View {
 }
 
 struct RecommendScrollView: View {
+    
+    @State private var selectedBoxIndex: Int? = nil
+    
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                ForEach(1..<5) { _ in
-                    BoxInfo()
+        ZStack {
+            VStack {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        ForEach(1..<5) { index in
+                            BoxInfo(
+                                index: index,
+                                location: Constant.location,
+                                selectedBoxIndex: $selectedBoxIndex
+                            ) { index in
+                                selectedBoxIndex = index
+                            }
+                        }
+                    }
+                    .padding(.top, 25)
+                }
+                if selectedBoxIndex != nil {
+                    
+                    Spacer()
+                    Button {
+                        
+                    } label: {
+                        ZStack {
+                            Color.GrayScale.black.color
+                            Text("Set as destination")
+                                .foregroundColor(Color.GrayScale.white.color)
+                        }.frame(width: UIScreen.main.bounds.width - 36.0, height: 50.0, alignment: .bottom)
+                            .cornerRadius(16.0)
+                            .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 60.0, trailing: 0.0))
+                            .background(Color.white)
+                    }
                 }
             }
-            .padding(.top, 25)
         }
     }
 }
 
-struct BoxInfo: View {
-    let bexco = Location(place: "Bexco", duration: 20, distance: 90, price: 20000, address: "55, APEC-ro, Haeundae-gu, Busan, Republic of Korea")
-    let boxRadius: CGFloat = 12
+
+// MARK: - Constant
+
+private extension RecommendScrollView {
     
-    @State var isBoxSelected = false
+    enum Constant {
+        static let location = Location(
+            place: "Bexco",
+            duration: 20,
+            distance: 90,
+            price: 20000,
+            address: "55, APEC-ro, Haeundae-gu, Busan, Republic of Korea"
+        )
+    }
+}
+
+
+// MARK: - BoxInfo
+
+struct BoxInfo: View {
+    let index: Int
+    let location: Location
+    @Binding var selectedBoxIndex: Int?
+    let action: (Int) -> Void
     
     var body: some View {
         Button {
-            handleButton(isBoxSelected)
+            action(index)
         } label: {
             ZStack {
-                RoundedRectangle(cornerRadius: boxRadius)
+                RoundedRectangle(cornerRadius: Metric.boxRadius)
                     .inset(by: 0.5)
-                    .stroke(Color.GrayScale.black.color)
-                    .background(handleBoxColor(isBoxSelected))
-                    .cornerRadius(boxRadius)
+                    .stroke(handleBoxStrokeAndTextColor(selectedIndex: selectedBoxIndex))
+                    .background(handleBoxColor(selectedIndex: selectedBoxIndex))
+                    .cornerRadius(Metric.boxRadius)
                 
                 VStack(spacing: 3) {
-                    Text(bexco.place)
+                    Text(location.place)
                         .font(.system(size: 20))
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(handleBoxStrokeAndTextColor(selectedIndex: selectedBoxIndex))
                     
                     HStack(spacing: 13) {
-                        Text("\(bexco.duration)min")
-                        Text("\(bexco.distance)km")
-                        Text("\(bexco.price)won")
+                        Text("\(location.duration)min")
+                        Text("\(location.distance)km")
+                        Text("\(location.price)won")
                     }
                     .font(.system(size: 12))
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(handleBoxStrokeAndTextColor(selectedIndex: selectedBoxIndex))
                     
-                    Text(bexco.address)
+                    Text(location.address)
                         .font(.system(size: 10))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -123,15 +174,23 @@ struct BoxInfo: View {
             .foregroundColor(Color.GrayScale.black.color)
         }
     }
-    func handleButton(_ isBoxSelected: Bool) {
-        self.isBoxSelected.toggle()
-    }
-    
-    func handleBoxColor(_ isBoxSelected: Bool) -> Color {
-        if !isBoxSelected {
-            return .clear
-        } else {
-            return Color.Primary.light.color
+    func handleBoxStrokeAndTextColor(selectedIndex: Int?) -> Color {
+        guard let selectedIndex else {
+            return .GrayScale.black.color
         }
+        return selectedIndex == index ? .GrayScale.black.color : .GrayScale.gray4.color
+    }
+    func handleBoxColor(selectedIndex: Int?) -> Color {
+        return selectedIndex == index ? Color.Primary.light.color : .clear
+    }
+}
+
+
+// MARK: - Constant
+
+private extension BoxInfo {
+    
+    enum Metric {
+        static let boxRadius: CGFloat = 12
     }
 }
