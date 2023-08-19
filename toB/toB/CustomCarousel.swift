@@ -16,14 +16,13 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
     var items: Item
     var isFullScreen: Bool
     init(
-        index:Binding<Int>,
+        index: Binding<Int>,
         items: Item,
-        spacing:CGFloat = 30,
-        cardPadding:CGFloat = 80,
+        spacing: CGFloat = 30,
+        cardPadding: CGFloat = 80,
         id: KeyPath<Item.Element, ID>,
         isFullScreen: Bool,
-        @ViewBuilder content: @escaping (Item.Element,CGSize,Int?
-        ) -> Content
+        @ViewBuilder content: @escaping (Item.Element,CGSize,Int?) -> Content
     ){
         self.content = content
         self.id = id
@@ -35,16 +34,16 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
     }
     
     //MARK: Gesture Properties
-    @GestureState var translation:CGFloat = 0
-    @State var offset_XIndex:CGFloat = 0
-    @State var lastStoredOffset:CGFloat = 0
-    @State var currentIndex:Int = 0
+    @GestureState var translation: CGFloat = 0
+    @State var offset_XIndex: CGFloat = 0
+    @State var lastStoredOffset: CGFloat = 0
+    @State var currentIndex: Int = 0
     var body: some View {
-        GeometryReader{proxy in
+        GeometryReader{ proxy in
             let size = proxy.size
             let cardWidth = size.width - (cardPadding - spacing)
-            LazyHStack(spacing: spacing){
-                ForEach(items, id: id){val in
+            LazyHStack(spacing: spacing) {
+                ForEach(items, id: id) { val in
                     let index = indexOf(item: val)
                     var contentHeight: CGFloat {
                         guard index == self.index else {
@@ -77,7 +76,7 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
             .contentShape(Rectangle())
             .gesture(
                 DragGesture(minimumDistance: 15)
-                    .updating($translation, body: {value, out, _ in
+                    .updating($translation, body: { value, out, _ in
                         out = value.translation.width
                     })
                     .onChanged{onChanged(value: $0, cardWidth: cardWidth)}
@@ -95,7 +94,7 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
     
     func indexOf(item: Item.Element) -> Int {
         let array = Array(items)
-        if let index = array.firstIndex(of: item){
+        if let index = array.firstIndex(of: item) {
             return index
         }
         return 0
@@ -112,19 +111,19 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
         }
     }
     
-    func onChanged(value: DragGesture.Value, cardWidth:CGFloat){
+    func onChanged(value: DragGesture.Value, cardWidth:CGFloat) {
         let translationX = value.translation.width
         offset_XIndex = translationX + lastStoredOffset
     }
     
-    func onEnd(value: DragGesture.Value, cardWidth:CGFloat){
-        var _index = (offset_XIndex/cardWidth).rounded()
-        _index = max(-CGFloat(items.count-1),_index)
+    func onEnd(value: DragGesture.Value, cardWidth: CGFloat) {
+        var _index = (offset_XIndex / cardWidth).rounded()
+        _index = max(-CGFloat(items.count-1), _index)
         _index = min(_index, 0)
         currentIndex = Int(_index)
         index = -currentIndex
         
-        withAnimation(.easeOut(duration: 0.25)){
+        withAnimation(.easeOut(duration: 0.25)) {
             let extraSpace = (cardPadding / 2) - spacing
             offset_XIndex = (cardWidth * _index) + extraSpace
         }

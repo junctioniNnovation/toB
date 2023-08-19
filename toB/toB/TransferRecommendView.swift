@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TransferRecommendView: View {
+    
     @State var Ontab: Bool = false
     @State var background: Color = .clear
     @State var currentIndex: Int = 0
@@ -89,6 +90,7 @@ private extension TransferRecommendView {
         }
     }
 }
+
 
 // MARK: - Full Screen Card
 
