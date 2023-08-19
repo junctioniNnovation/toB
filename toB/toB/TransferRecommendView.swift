@@ -27,6 +27,7 @@ struct TransferRecommendView: View {
                 if isFullScreen {
                     Header()
                 }
+                
                 // Custom Carousel
                 CustomCarousel(
                     index: $currentIndex,
@@ -193,7 +194,7 @@ private extension TransferRecommendView {
                     HStack {
                         Text("Travel Time")
                             .font(.system(size: 10.0, weight: .light))
-                        Text("\(transfertation.travelMinute)Min")
+                        Text("\(transfertation.travelMinute)min")
                             .font(.system(size: 12.0, weight: .semibold))
                     }
                     HStack {
@@ -251,40 +252,34 @@ let transfertationList:[Transfertation] = [
         .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
         .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
     ], price: 13000, image: UIImage(named: "Ferry")),
-    .init(name: "Taxi", travelMinute: 40, distance: 7200, tagDatas: [
+    .init(name: "Taxi", travelMinute: 25, distance: 2300, tagDatas: [
         .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
         .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
         .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
         .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "Taxi")),
-    .init(name: "City Tour Bus", travelMinute: 40, distance: 7200, tagDatas: [
+    ], price: 18000, image: UIImage(named: "Taxi")),
+    .init(name: "Bicycle", travelMinute: 30, distance: 1100, tagDatas: [
         .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
         .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
         .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
         .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "CityTourBus")),
-    .init(name: "Bicycle", travelMinute: 40, distance: 7200, tagDatas: [
-        .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "Bicycle")),
+    ], price: 3000, image: UIImage(named: "Bicycle")),
     .init(name: "Regular Bus", travelMinute: 40, distance: 7200, tagDatas: [
         .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
         .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
         .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
         .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
     ], price: 13000, image: UIImage(named: "RegularBus")),
-    .init(name: "Monorail", travelMinute: 40, distance: 7200, tagDatas: [
+    .init(name: "Monorail", travelMinute: 15, distance: 1300, tagDatas: [
         .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
         .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
         .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
         .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "Monorail")),
-    .init(name: "Beach Train", travelMinute: 40, distance: 7200, tagDatas: [
+    ], price: 12000, image: UIImage(named: "Monorail")),
+    .init(name: "Beach Train", travelMinute: 30, distance: 4800, tagDatas: [
         .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
         .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
         .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
         .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "BeachTrain"))
+    ], price: 12000, image: UIImage(named: "BeachTrain"))
 ]
