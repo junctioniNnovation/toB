@@ -36,7 +36,9 @@ private extension SmallCarouselView {
                     .tint(Color.GrayScale.black.color)
             }
             Spacer()
-            Text("Transportation").frame(alignment: .center)
+            Text("Transportation")
+                .frame(alignment: .center)
+                .fontWeight(.bold)
             Spacer()
         }
     }
