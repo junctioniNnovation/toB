@@ -14,6 +14,7 @@ struct TransferRecommendView: View {
     @State var currentIndex: Int = 0
     @State private var shouldTransition = true
     @Binding var isScreenUp: Bool
+    @State var isRatingViewShouldShow = false
     @State var isArrivalRecommendViewShouldShow = false
     @State var transfertationList = transfertationListData
     var isFullScreen = false
@@ -61,7 +62,7 @@ struct TransferRecommendView: View {
                     Spacer()
                     Button {
                         guard isFullScreen else {
-                            // TODO: -
+                            isRatingViewShouldShow.toggle()
                             return
                         }
                         isArrivalRecommendViewShouldShow.toggle()
@@ -79,6 +80,9 @@ struct TransferRecommendView: View {
         }.presentationDetents([.medium])
             .fullScreenCover(isPresented: $isArrivalRecommendViewShouldShow) {
                 ArrivalRecommendView(isArrivalRecommendViewShouldShow: $isArrivalRecommendViewShouldShow)
+            }
+            .fullScreenCover(isPresented: $isRatingViewShouldShow) {
+                RatingView(isRatingViewShouldShow: $isRatingViewShouldShow)
             }
             .onChange(of: currentIndex) { newValue in
                 action(newValue)

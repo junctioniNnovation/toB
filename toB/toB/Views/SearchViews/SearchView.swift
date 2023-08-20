@@ -12,6 +12,7 @@ struct SearchView: View {
     // 시작점: -> 변수이름 변경하는 것도 낫배드
     @State private var destination: String = ""
     @State private var endPoint: String = ""
+    @Binding var isSearchViewShoudShow: Bool
     @State var action: (String) -> Void
     
     let borderRadius = 10.0
@@ -100,7 +101,7 @@ struct SearchView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        
+                        isSearchViewShoudShow.toggle()
                     } label: {
                         Image(systemName: BarItems.rightButton.label)
                             .fontWeight(.semibold)

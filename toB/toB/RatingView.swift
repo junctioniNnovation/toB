@@ -66,6 +66,7 @@ enum Tags {
 
 struct RatingView: View {
     @State var selectedTagCount: Int = 0
+    @Binding var isRatingViewShouldShow: Bool
     
     let description = "How was your journey?"
     let buttonLabel = "Complete"
@@ -89,6 +90,7 @@ struct RatingView: View {
                 TagStack(tagCount: $selectedTagCount)
                 
                 Button {
+                    isRatingViewShouldShow.toggle()
                 } label: {
                     Text(buttonLabel)
                         .foregroundColor(handleButtonText(selectedTagCount ))
@@ -284,11 +286,5 @@ struct TagBox: View {
         } else {
             return Color.GrayScale.gray6.color
         }
-    }
-}
-
-struct RatingView_Previews: PreviewProvider {
-    static var previews: some View {
-        RatingView()
     }
 }

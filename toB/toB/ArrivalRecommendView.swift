@@ -78,6 +78,7 @@ struct ArrivalRecommendView: View {
 struct RecommendScrollView: View {
     
     @State private var selectedBoxIndex: Int? = nil
+    @State var isRatingViewShouldShow = false
     
     var body: some View {
         ZStack {
@@ -100,7 +101,7 @@ struct RecommendScrollView: View {
                     
                     Spacer()
                     Button {
-                        
+                        isRatingViewShouldShow.toggle()
                     } label: {
                         ZStack {
                             Color.GrayScale.black.color
@@ -113,6 +114,9 @@ struct RecommendScrollView: View {
                     }
                 }
             }
+        }
+        .fullScreenCover(isPresented: $isRatingViewShouldShow) {
+            RatingView(isRatingViewShouldShow: $isRatingViewShouldShow)
         }
     }
 }

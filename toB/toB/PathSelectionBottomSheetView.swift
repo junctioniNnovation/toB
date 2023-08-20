@@ -90,7 +90,7 @@ private extension PathSelectionBottomSheetView {
             }
         }
         .fullScreenCover(isPresented: $isSearchViewShoudShow) {
-            SearchView() { destination in
+            SearchView(isSearchViewShoudShow: $isSearchViewShoudShow) { destination in
                 endPoint = destination
                 isEndpointPrimary = true
                 isSearchViewShoudShow.toggle()
