@@ -18,20 +18,56 @@ struct Info {
 }
 
 enum Tags {
-    case exciting
+    case isSavoring
+    case isFast
+    case isSway
+    case isPrivate
+    case isLowCost
+    case isUrban
+    case isSlowly
+    case isRestful
+    case isUnique
+    case isPhotospot
+    case isScnery
+    case isDynamic
+    case isAsIPlease
     
     var tagStyle: (String, Color) {
         switch self {
-        case .exciting:
-            return ("#exciting", Color.Tag.purple.color)
+        case .isSavoring:
+            return ("# Savoring", Color.Tag.yellow.color)
+        case .isFast:
+            return ("# Fast", Color.Tag.yellow.color)
+        case .isSway:
+            return ("# Sway", Color.Tag.purple.color)
+        case .isPrivate:
+            return ("# Private", Color.Tag.purple.color)
+        case .isLowCost:
+            return ("# LowCost", Color.Tag.pink.color)
+        case .isUrban:
+            return ("# Urban", Color.Tag.purple.color)
+        case .isSlowly:
+            return ("# Slowly", Color.Tag.pink.color)
+        case .isRestful:
+            return ("# Restful", Color.Tag.yellow.color)
+        case .isUnique:
+            return ("# Unique", Color.Tag.yellow.color)
+        case .isPhotospot:
+            return ("# Photospot", Color.Tag.purple.color)
+        case .isScnery:
+            return ("# Scenery", Color.Tag.blue.color)
+        case .isDynamic:
+            return ("# Dynamic", Color.Tag.yellow.color)
+        case .isAsIPlease:
+            return ("#As I Please", Color.Tag.pink.color)
         }
     }
 }
 
 struct RatingView: View {
-    @State var selectedTagCount = 0
+    @State var selectedTagCount: Int = 0
     
-    let description = "How was this journey \nfor you?"
+    let description = "How was your journey?"
     let buttonLabel = "Complete"
     let buttonRadius = 16.0
     
@@ -45,7 +81,7 @@ struct RatingView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 30)
-                    .padding(.bottom, 31)
+                    .padding(.bottom, 34)
                 
                 InfoCard(info: beachTrain)
                     .padding(.bottom, 20)
@@ -55,16 +91,15 @@ struct RatingView: View {
                 Button {
                 } label: {
                     Text(buttonLabel)
-                        .foregroundColor(handleButtonStyle(selectedTagCount).1)
+                        .foregroundColor(handleButtonText(selectedTagCount ))
                         .fontWeight(.semibold)
                         .padding(.vertical, 15)
-                        .padding(.horizontal, 130.5)
+                        .frame(maxWidth: .infinity)
                         .background(
-                            RoundedRectangle(cornerRadius: buttonRadius)
-                                .fill(handleButtonStyle(selectedTagCount).0)
+                            handleButtonStyle(selectedTagCount)
                         )
                 }
-                .padding(.bottom, 60)
+                .padding(.bottom, 10)
             }
             .padding(.horizontal, 24)
             .toolbar {
@@ -80,12 +115,29 @@ struct RatingView: View {
             }
         }
     }
-    
-    func handleButtonStyle(_ selectedTagCount: Int) -> (Color, Color) {
+    func handleButtonText(_ selectedTagCount: Int) -> Color {
         if selectedTagCount < 1 {
-            return (Color.GrayScale.white.color, Color.GrayScale.gray4.color)
+            return Color.GrayScale.gray4.color
         } else {
-            return (Color.GrayScale.black.color, Color.GrayScale.white.color)
+            return Color.GrayScale.white.color
+        }
+    }
+    
+    func handleButtonStyle(_ selectedTagCount: Int) -> some View {
+        if selectedTagCount < 1 {
+            let rectangle = RoundedRectangle(cornerRadius: buttonRadius)
+                .inset(by: 0.5)
+                .strokeBorder(Color.GrayScale.gray4.color)
+                .background(Color.GrayScale.white.color)
+                .cornerRadius(buttonRadius)
+            return rectangle
+        } else {
+            let rectangle = RoundedRectangle(cornerRadius: buttonRadius)
+                .inset(by: 0.5)
+                .strokeBorder(Color.GrayScale.black.color)
+                .background(Color.GrayScale.black.color)
+                .cornerRadius(buttonRadius)
+            return rectangle
         }
     }
 }
@@ -123,8 +175,8 @@ struct InfoCard: View {
                         
                         VStack(alignment: .leading, spacing: 6) {
                             Text("\(info.duration)min")
-                            Text("\(String(format: "%.1f", info.distance))min")
-                            Text("\(info.price)min")
+                            Text("\(String(format: "%.1f", info.distance))km")
+                            Text("\(info.price) won")
                         }
                         .font(.system(size: 12))
                         .fontWeight(.semibold)
@@ -154,14 +206,38 @@ struct TagStack: View {
     @Binding var tagCount: Int
     
     var body: some View {
-        VStack {
-            HStack {
-                TagBox(tagCount: $tagCount, style: Tags.exciting.tagStyle)
+        VStack(spacing: 14) {
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isSavoring.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isFast.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isPrivate.tagStyle)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isSway.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isLowCost.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isUrban.tagStyle)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isSlowly.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isRestful.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isUnique.tagStyle)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isPhotospot.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isScnery.tagStyle)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 12) {
+                TagBox(tagCount: $tagCount, style: Tags.isDynamic.tagStyle)
+                TagBox(tagCount: $tagCount, style: Tags.isAsIPlease.tagStyle)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
         }
-            .frame(maxHeight: .infinity)
+        .frame(maxHeight: .infinity)
     }
 }
 
@@ -174,9 +250,8 @@ struct TagBox: View {
     
     var body: some View {
         Button {
-            handleTag(isTagSelected, tagCount)
+            handleTag(isTagSelected, tagCount ?? 0)
         } label: {
-            HStack {
                 Text(style.0)
                     .font(.system(size: 16))
                     .fontWeight(.bold)
@@ -191,7 +266,6 @@ struct TagBox: View {
                     .stroke(Color.GrayScale.black.color)
                     .background(handleTagStyle(isTagSelected))
                     .cornerRadius(tagRadius))
-        }
     }
     func handleTag(_ isTagSelected: Bool, _ tagCount: Int) {
         self.isTagSelected.toggle()

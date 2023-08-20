@@ -15,6 +15,7 @@ struct TransferRecommendView: View {
     @State private var shouldTransition = true
     @Binding var isScreenUp: Bool
     @State var isArrivalRecommendViewShouldShow = false
+    @State var transfertationList = transfertationListData
     var isFullScreen = false
     
     private let maxScaleEffect: CGFloat = 4.0
@@ -27,25 +28,15 @@ struct TransferRecommendView: View {
                 if isFullScreen {
                     Header()
                 }
+                
                 // Custom Carousel
-                CustomCarousel(
-                    index: $currentIndex,
-                    items: transfertationList,
-                    spacing: UIScreen.main.bounds.width / 3,
-                    cardPadding: 48.0,
-                    id: \.self,
-                    isFullScreen: isFullScreen
-                ) { transfertation, _, _ in
-                    if isFullScreen {
-                        FullscreenCard(transfertation: transfertation)
-                    } else {
-                        SheetCard(transfertation: transfertation)
-                    }
-                }
-                .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: isFullScreen ? 53.0 : 37.0, trailing: 0.0))
+                Carousel()
+                
                 HStack {
                     Button {
-                        isScreenUp.toggle()
+                        let currentTransfertation = transfertationList[currentIndex]
+                        transfertationList.remove(at: currentIndex)
+                        transfertationList.append(currentTransfertation)
                     } label: {
                         Circle()
                             .overlay(Circle().fill(Color.GrayScale.gray5.color))
@@ -55,6 +46,10 @@ struct TransferRecommendView: View {
                     }
                     Spacer()
                     Button {
+                        guard isFullScreen else {
+                            // TODO: -
+                            return
+                        }
                         isArrivalRecommendViewShouldShow.toggle()
                     } label: {
                         Circle()
@@ -193,7 +188,7 @@ private extension TransferRecommendView {
                     HStack {
                         Text("Travel Time")
                             .font(.system(size: 10.0, weight: .light))
-                        Text("\(transfertation.travelMinute)Min")
+                        Text("\(transfertation.travelMinute)min")
                             .font(.system(size: 12.0, weight: .semibold))
                     }
                     HStack {
@@ -244,47 +239,43 @@ struct TagData: Hashable, Equatable, Identifiable {
     let percentage: CGFloat
 }
 
-let transfertationList:[Transfertation] = [
-    .init(name: "Ferry", travelMinute: 40, distance: 7200, tagDatas: [
-        .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "Ferry")),
-    .init(name: "Taxi", travelMinute: 40, distance: 7200, tagDatas: [
-        .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "Taxi")),
-    .init(name: "City Tour Bus", travelMinute: 40, distance: 7200, tagDatas: [
-        .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "CityTourBus")),
-    .init(name: "Bicycle", travelMinute: 40, distance: 7200, tagDatas: [
-        .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "Bicycle")),
-    .init(name: "Regular Bus", travelMinute: 40, distance: 7200, tagDatas: [
-        .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "RegularBus")),
-    .init(name: "Monorail", travelMinute: 40, distance: 7200, tagDatas: [
-        .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "Monorail")),
-    .init(name: "Beach Train", travelMinute: 40, distance: 7200, tagDatas: [
-        .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
-        .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
-    ], price: 13000, image: UIImage(named: "BeachTrain"))
-]
+private extension TransferRecommendView {
+    static let transfertationListData:[Transfertation] = [
+        .init(name: "Ferry", travelMinute: 40, distance: 7200, tagDatas: [
+            .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
+        ], price: 13000, image: UIImage(named: "Ferry")),
+        .init(name: "Taxi", travelMinute: 25, distance: 2300, tagDatas: [
+            .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
+        ], price: 18000, image: UIImage(named: "Taxi")),
+        .init(name: "Bicycle", travelMinute: 30, distance: 1100, tagDatas: [
+            .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
+        ], price: 3000, image: UIImage(named: "Bicycle")),
+        .init(name: "Regular Bus", travelMinute: 40, distance: 7200, tagDatas: [
+            .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
+        ], price: 13000, image: UIImage(named: "RegularBus")),
+        .init(name: "Monorail", travelMinute: 15, distance: 1300, tagDatas: [
+            .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
+        ], price: 12000, image: UIImage(named: "Monorail")),
+        .init(name: "Beach Train", travelMinute: 30, distance: 4800, tagDatas: [
+            .init(text: "# 한적한", backgroundColor: .Tag.blue.color, percentage: 80.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.pink.color, percentage: 90.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.yellow.color, percentage: 85.0),
+            .init(text: "# 한적한", backgroundColor: .Tag.purple.color, percentage: 98.0)
+        ], price: 12000, image: UIImage(named: "BeachTrain"))
+    ]
+}

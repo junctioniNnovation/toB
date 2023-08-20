@@ -99,8 +99,8 @@ private extension PathSelectionBottomSheetView {
         .fullScreenCover(isPresented: $isSFullScreenUp) {
             TransferRecommendView(isScreenUp: $isSFullScreenUp, isFullScreen: true)
         }
-        .sheet(isPresented: $isSheetUp) {
-            TransferRecommendView(isScreenUp: $isSheetUp, isFullScreen: false)
+        .fullScreenCover(isPresented: $isSheetUp) {
+            SmallCarouselView(isSheetUp: $isSheetUp)
         }
     }
 }
