@@ -130,7 +130,6 @@ private extension PathSelectionBottomSheetView {
                 }
             }
             .padding(EdgeInsets(top: 38.0, leading: 18.0, bottom: 0.0, trailing: 18.0))
-            
             Button {
                 isTravelerNumberSelected = true
                 withAnimation {
@@ -141,7 +140,7 @@ private extension PathSelectionBottomSheetView {
                     Color.GrayScale.black.color
                     Text("Continue")
                         .foregroundColor(Color.GrayScale.white.color)
-                }.frame(width: UIScreen.main.bounds.width - 36.0, height: 50.0)
+                }.frame(width: UIScreen.main.bounds.width - 48.0, height: 50.0)
                     .cornerRadius(16.0)
                     .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 60.0, trailing: 0.0))
                 
