@@ -59,6 +59,10 @@ struct TransferRecommendView: View {
                     }
                     Spacer()
                     Button {
+                        guard isFullScreen else {
+                            // TODO: -
+                            return
+                        }
                         isArrivalRecommendViewShouldShow.toggle()
                     } label: {
                         Circle()
