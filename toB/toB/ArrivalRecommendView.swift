@@ -40,11 +40,11 @@ struct ArrivalRecommendView: View {
     @StateObject var locationManager = LocationManager()
     @Binding var isArrivalRecommendViewShouldShow: Bool
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
-    
+    @State var lineString = NMGLineString(points: []) as NMGLineString<AnyObject>
     var body: some View {
         NavigationStack {
             VStack {
-                UIMapView(coord: $locationManager.currentCoordinate)
+                UIMapView(coord: $locationManager.currentCoordinate, lineString: $lineString)
                 
                 RecommendScrollView()
                     .cornerRadius(12.0, corners: [.topLeft, .topRight])

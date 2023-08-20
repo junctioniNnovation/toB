@@ -14,10 +14,11 @@ import CoreLocation
 struct ContentView: View {
     @StateObject var locationManager = LocationManager()
     @State var isSheetOn = true
+    @State var lineString = NMGLineString(points: []) as NMGLineString<AnyObject>
     
     var body: some View {
         ZStack {
-            UIMapView(coord: $locationManager.currentCoordinate)
+            UIMapView(coord: $locationManager.currentCoordinate, lineString: $lineString)
                 .edgesIgnoringSafeArea(.vertical)
             VStack {
                 Spacer()
@@ -50,6 +51,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 struct UIMapView: UIViewRepresentable {
     @Binding var coord: CLLocationCoordinate2D
+    @Binding var lineString: NMGLineString<AnyObject>
+    
     let pathOverlay = NMFPath()
     
     func makeUIView(context: Context) -> NMFNaverMapView {
@@ -68,20 +71,7 @@ struct UIMapView: UIViewRepresentable {
         cameraUpdate.animationDuration = 1.0
         uiView.mapView.moveCamera(cameraUpdate)
         
-        pathOverlay.path = NMGLineString(points: [
-            NMGLatLng(lat:35.158223, lng: 129.170924),
-            NMGLatLng(lat:35.159260, lng: 129.170146),
-            NMGLatLng(lat:35.161112, lng: 129.171540),
-            NMGLatLng(lat:35.156361, lng: 129.177946),
-            NMGLatLng(lat:35.164246, lng: 129.185680),
-            NMGLatLng(lat:35.162257, lng: 129.187934),
-            NMGLatLng(lat:35.160306, lng: 129.191395),
-            NMGLatLng(lat:35.175832, lng: 129.183867),
-            NMGLatLng(lat:35.183720, lng: 129.210448),
-            NMGLatLng(lat:35.199147, lng: 129.223787),
-            NMGLatLng(lat:35.200206, lng: 129.229012),
-
-        ])
+        pathOverlay.path = lineString
         pathOverlay.mapView = uiView.mapView
     }
 }

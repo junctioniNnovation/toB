@@ -17,6 +17,7 @@ struct TransferRecommendView: View {
     @State var isArrivalRecommendViewShouldShow = false
     @State var transfertationList = transfertationListData
     var isFullScreen = false
+    var action: (Int) -> Void
     
     private let maxScaleEffect: CGFloat = 4.0
     private let minScaleEffect: CGFloat = 0
@@ -78,6 +79,9 @@ struct TransferRecommendView: View {
         }.presentationDetents([.medium])
             .fullScreenCover(isPresented: $isArrivalRecommendViewShouldShow) {
                 ArrivalRecommendView(isArrivalRecommendViewShouldShow: $isArrivalRecommendViewShouldShow)
+            }
+            .onChange(of: currentIndex) { newValue in
+                action(newValue)
             }
     }
 }
