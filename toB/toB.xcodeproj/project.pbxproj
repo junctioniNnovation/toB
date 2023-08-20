@@ -33,6 +33,7 @@
 		F97251CB2A90591C00CA4D73 /* DestinationSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97251CA2A90591B00CA4D73 /* DestinationSelectorView.swift */; };
 		F9EBF5692A90E74B003E128B /* CustomCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EBF5682A90E74B003E128B /* CustomCarousel.swift */; };
 		F9EBF56B2A90E775003E128B /* TransferRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EBF56A2A90E775003E128B /* TransferRecommendView.swift */; };
+		F9EBF5712A918B7D003E128B /* SmallCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EBF5702A918B7D003E128B /* SmallCarouselView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		F97251CA2A90591B00CA4D73 /* DestinationSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectorView.swift; sourceTree = "<group>"; };
 		F9EBF5682A90E74B003E128B /* CustomCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCarousel.swift; sourceTree = "<group>"; };
 		F9EBF56A2A90E775003E128B /* TransferRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferRecommendView.swift; sourceTree = "<group>"; };
+		F9EBF5702A918B7D003E128B /* SmallCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCarouselView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				F97251BD2A901FF800CA4D73 /* AppDelegate.swift */,
 				F972518C2A901B6900CA4D73 /* ContentView.swift */,
 				F97251C12A90371F00CA4D73 /* PathSelectionBottomSheetView.swift */,
+				F9EBF5702A918B7D003E128B /* SmallCarouselView.swift */,
 				F9EBF56A2A90E775003E128B /* TransferRecommendView.swift */,
 				F9EBF5682A90E74B003E128B /* CustomCarousel.swift */,
 				5B07B8F12A904F5E00DDE9DF /* DestinationSettingSheetView.swift */,
@@ -487,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9EBF5712A918B7D003E128B /* SmallCarouselView.swift in Sources */,
 				F97251C22A90371F00CA4D73 /* PathSelectionBottomSheetView.swift in Sources */,
 				F9EBF56B2A90E775003E128B /* TransferRecommendView.swift in Sources */,
 				F97251C92A903C0800CA4D73 /* Colors.swift in Sources */,
