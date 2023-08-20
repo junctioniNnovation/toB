@@ -40,11 +40,11 @@ struct ArrivalRecommendView: View {
     @StateObject var locationManager = LocationManager()
     @Binding var isArrivalRecommendViewShouldShow: Bool
     @State var coord: (Double, Double) = (126.9784147, 37.5666805)
-    
+    @State var lineString = NMGLineString(points: []) as NMGLineString<AnyObject>
     var body: some View {
         NavigationStack {
             VStack {
-                UIMapView(coord: $locationManager.currentCoordinate)
+                UIMapView(coord: $locationManager.currentCoordinate, lineString: $lineString)
                 
                 RecommendScrollView()
                     .cornerRadius(12.0, corners: [.topLeft, .topRight])
@@ -78,6 +78,7 @@ struct ArrivalRecommendView: View {
 struct RecommendScrollView: View {
     
     @State private var selectedBoxIndex: Int? = nil
+    @State var isRatingViewShouldShow = false
     
     var body: some View {
         ZStack {
@@ -100,7 +101,7 @@ struct RecommendScrollView: View {
                     
                     Spacer()
                     Button {
-                        
+                        isRatingViewShouldShow.toggle()
                     } label: {
                         ZStack {
                             Color.GrayScale.black.color
@@ -113,6 +114,9 @@ struct RecommendScrollView: View {
                     }
                 }
             }
+        }
+        .fullScreenCover(isPresented: $isRatingViewShouldShow) {
+            RatingView(isRatingViewShouldShow: $isRatingViewShouldShow)
         }
     }
 }

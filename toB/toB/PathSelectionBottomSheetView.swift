@@ -90,14 +90,14 @@ private extension PathSelectionBottomSheetView {
             }
         }
         .fullScreenCover(isPresented: $isSearchViewShoudShow) {
-            SearchView() { destination in
+            SearchView(isSearchViewShoudShow: $isSearchViewShoudShow) { destination in
                 endPoint = destination
                 isEndpointPrimary = true
                 isSearchViewShoudShow.toggle()
             }
         }
         .fullScreenCover(isPresented: $isSFullScreenUp) {
-            TransferRecommendView(isScreenUp: $isSFullScreenUp, isFullScreen: true)
+            TransferRecommendView(isScreenUp: $isSFullScreenUp, isFullScreen: true) {_ in}
         }
         .fullScreenCover(isPresented: $isSheetUp) {
             SmallCarouselView(isSheetUp: $isSheetUp)
