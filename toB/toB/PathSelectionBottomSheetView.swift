@@ -99,8 +99,8 @@ private extension PathSelectionBottomSheetView {
         .fullScreenCover(isPresented: $isSFullScreenUp) {
             TransferRecommendView(isScreenUp: $isSFullScreenUp, isFullScreen: true)
         }
-        .sheet(isPresented: $isSheetUp) {
-            TransferRecommendView(isScreenUp: $isSheetUp, isFullScreen: false)
+        .fullScreenCover(isPresented: $isSheetUp) {
+            SmallCarouselView(isSheetUp: $isSheetUp)
         }
     }
 }
@@ -130,7 +130,7 @@ private extension PathSelectionBottomSheetView {
                 }
             }
             .padding(EdgeInsets(top: 38.0, leading: 18.0, bottom: 0.0, trailing: 18.0))
-            Spacer()
+            
             Button {
                 isTravelerNumberSelected = true
                 withAnimation {

@@ -75,7 +75,7 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
             .offset(x: limitScroll(), y:0)
             .contentShape(Rectangle())
             .gesture(
-                DragGesture(minimumDistance: 15)
+                DragGesture(minimumDistance: 10)
                     .updating($translation, body: { value, out, _ in
                         out = value.translation.width
                     })
