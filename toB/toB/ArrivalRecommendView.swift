@@ -14,7 +14,7 @@ struct Location {
     let uuid = UUID()
     let place: String
     let duration: Int
-    let distance: Int
+    let distance: CGFloat
     let price: Int
     let address: String
 }
@@ -87,7 +87,7 @@ struct RecommendScrollView: View {
                         ForEach(1..<5) { index in
                             BoxInfo(
                                 index: index,
-                                location: Constant.location,
+                                location: Constant.locations[index],
                                 selectedBoxIndex: $selectedBoxIndex
                             ) { index in
                                 selectedBoxIndex = index
@@ -123,13 +123,39 @@ struct RecommendScrollView: View {
 private extension RecommendScrollView {
     
     enum Constant {
-        static let location = Location(
-            place: "Bexco",
-            duration: 20,
-            distance: 90,
-            price: 20000,
-            address: "55, APEC-ro, Haeundae-gu, Busan, Republic of Korea"
-        )
+        static let locations: [Location] = [
+            Location(
+                place: "Dalmaji Tunnel",
+                duration: 8,
+                distance: 0.8,
+                price: 7000,
+                address: "42-64 Jung-dong, Haeundae-gu, Busan"
+            ),Location(
+                place: "Cheongsapo",
+                duration: 17,
+                distance: 2.3,
+                price: 7000,
+                address: "25 Cheongsapo-ro 128beon-gil, Haeundae-gu, Busan"
+            ),Location(
+                place: "Daritdol Skywalk",
+                duration: 20,
+                distance: 29,
+                price: 7000,
+                address: "3-9 Jung-dong, Haeundae-gu, Busan"
+            ),Location(
+                place: "Gudeokpo",
+                duration: 24,
+                distance: 3.4,
+                price: 7000,
+                address: "919-2 Songjeong-dong, Haeundae-gu, Busan"
+            ),Location(
+                place: "Songjeong Station Donghae Line",
+                duration: 30,
+                distance: 4.8,
+                price: 7000,
+                address: "1147, Haeun-daero, Haeundae-gu, Busan, Republic of Korea"
+            ),
+        ]
     }
 }
 

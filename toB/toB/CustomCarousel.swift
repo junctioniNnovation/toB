@@ -49,7 +49,7 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
                         guard index == self.index else {
                             return 0
                         }
-                        return isFullScreen ? 494.0 : 164.0
+                        return isFullScreen ? 494.0 : 220.0
                     }
                     content(
                         val,
@@ -58,7 +58,7 @@ struct CustomCarousel<Content: View,Item,ID>: View where Item: RandomAccessColle
                     )
                     .frame(width: size.width - cardPadding, height: contentHeight)
                     .contentShape(Rectangle())
-                    .background(index == self.index ? Color.Primary.light20.color.opacity(20.0) : Color.gray)
+                    .background(index == self.index ? Color.Primary.light20.color : Color.gray)
                     .cornerRadius(15.0)
                     .overlay(
                         RoundedRectangle(
