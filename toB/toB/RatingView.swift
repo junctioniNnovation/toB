@@ -65,7 +65,7 @@ enum Tags {
 }
 
 struct RatingView: View {
-    @State var selectedTagCount = 0
+    @State var selectedTagCount: Int = 0
     
     let description = "How was your journey?"
     let buttonLabel = "Complete"
@@ -91,7 +91,7 @@ struct RatingView: View {
                 Button {
                 } label: {
                     Text(buttonLabel)
-                        .foregroundColor(handleButtonText(selectedTagCount))
+                        .foregroundColor(handleButtonText(selectedTagCount ))
                         .fontWeight(.semibold)
                         .padding(.vertical, 15)
                         .frame(maxWidth: .infinity)
@@ -176,7 +176,7 @@ struct InfoCard: View {
                         VStack(alignment: .leading, spacing: 6) {
                             Text("\(info.duration)min")
                             Text("\(String(format: "%.1f", info.distance))km")
-                            Text("\(info.price)won")
+                            Text("\(info.price) won")
                         }
                         .font(.system(size: 12))
                         .fontWeight(.semibold)
@@ -250,9 +250,8 @@ struct TagBox: View {
     
     var body: some View {
         Button {
-            handleTag(isTagSelected, tagCount)
+            handleTag(isTagSelected, tagCount ?? 0)
         } label: {
-            HStack {
                 Text(style.0)
                     .font(.system(size: 16))
                     .fontWeight(.bold)
@@ -267,7 +266,6 @@ struct TagBox: View {
                     .stroke(Color.GrayScale.black.color)
                     .background(handleTagStyle(isTagSelected))
                     .cornerRadius(tagRadius))
-        }
     }
     func handleTag(_ isTagSelected: Bool, _ tagCount: Int) {
         self.isTagSelected.toggle()

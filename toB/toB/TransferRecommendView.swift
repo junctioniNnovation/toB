@@ -29,21 +29,8 @@ struct TransferRecommendView: View {
                 }
                 
                 // Custom Carousel
-                CustomCarousel(
-                    index: $currentIndex,
-                    items: transfertationList,
-                    spacing: UIScreen.main.bounds.width / 3,
-                    cardPadding: 48.0,
-                    id: \.self,
-                    isFullScreen: isFullScreen
-                ) { transfertation, _, _ in
-                    if isFullScreen {
-                        FullscreenCard(transfertation: transfertation)
-                    } else {
-                        SheetCard(transfertation: transfertation)
-                    }
-                }
-                .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: isFullScreen ? 53.0 : 37.0, trailing: 0.0))
+                Carousel()
+                
                 HStack {
                     Button {
                         isScreenUp.toggle()
